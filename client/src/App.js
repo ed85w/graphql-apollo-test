@@ -1,11 +1,4 @@
 import './App.css';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql
-} from "@apollo/client";
 import Launches from './components/Launches';
 
 function App() {

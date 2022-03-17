@@ -19,13 +19,13 @@ const client = new ApolloClient({
 client
   .query({
     query: gql`{
-      launch(flight_number: 2){
+      launches{
+        flight_number
         mission_name
         rocket {
-          rocket_id
           rocket_name
-          rocket_type
         }
+        launch_success
       }
     }
     `
