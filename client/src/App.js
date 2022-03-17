@@ -7,35 +7,30 @@ import {
   gql
 } from "@apollo/client";
 
-const EXCHANGE_RATES = gql`
-  query GetExchangeRates {
-    rates(currency: "USD") {
-      currency
-      rate
+const LAUNCHES_QUERY = gql`
+  query LaunchesQuery {
+    launches {
+      flight_number
+      mission_name
     }
   }
-`;
+`
 
-function ExchangeRates() {
-  const { loading, error, data } = useQuery(EXCHANGE_RATES);
+function Launches() {
+  const { loading, error, data } = useQuery(LAUNCHES_QUERY);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  return data.rates.map(({ currency, rate }) => (
-    <div key={currency}>
-      <p>
-        {currency}: {rate}
-      </p>
-    </div>
-  ));
+  console.log(data)
+  return <h1>Test</h1>
 }
 
 function App() {
   return (
     <div className="App">
       <h1>Apollo App</h1>
-      <ExchangeRates></ExchangeRates>
+      <Launches></Launches>
     </div>
   );
 }
